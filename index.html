@@ -447,6 +447,70 @@
       font-size: 1.3rem;
       margin-bottom: 22px;
     }
+    /* Portfolio project cards */
+    .project-card {
+      padding: 0;
+      overflow: hidden;
+      cursor: pointer;
+    }
+    .project-card .project-img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      display: block;
+      border-radius: var(--radius) var(--radius) 0 0;
+      filter: brightness(0.7) saturate(0.8);
+      transition: filter 0.5s, transform 0.5s;
+    }
+    .project-card:hover .project-img {
+      filter: brightness(0.85) saturate(1);
+      transform: scale(1.03);
+    }
+    .project-card .project-body {
+      padding: 28px;
+    }
+    .project-card .project-tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.68rem;
+      color: var(--accent-2);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: 10px;
+    }
+    .project-card h3 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+      letter-spacing: -0.02em;
+    }
+    .project-card .project-desc {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+      font-weight: 300;
+      margin-bottom: 16px;
+    }
+    .project-card .project-link {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.78rem;
+      color: var(--accent-2);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: color 0.2s, gap 0.3s;
+    }
+    .project-card .project-link:hover {
+      color: var(--accent-3);
+      gap: 10px;
+    }
+    .project-card .project-link .link-arrow {
+      display: inline-block;
+      transition: transform 0.3s;
+    }
+    .project-card .project-link:hover .link-arrow {
+      transform: translateX(3px);
+    }
     .card h3 {
       font-size: 1.05rem;
       font-weight: 600;
@@ -638,11 +702,11 @@
           human × machine collaboration
         </div>
         <h1 class="reveal reveal-delay-1">
-          Crafting digital
-          <span class="line-2"><span class="gradient-text">experiences</span></span>
+          Designing for
+          <span class="line-2"><span class="gradient-text">purpose & people</span></span>
         </h1>
         <p class="hero-sub reveal reveal-delay-2">
-          A landmark in human-machine design collaboration. Zero frameworks, pure craft — where intuition meets intelligence.
+          Web design that amplifies what matters — coaching, counseling, human connection. Every pixel in service of the message.
         </p>
         <div class="hero-actions reveal reveal-delay-3">
           <a href="#portfolio" class="btn btn-primary">View Portfolio</a>
@@ -660,16 +724,16 @@
       <div class="wrapper">
         <div class="stats">
           <div class="stat reveal">
-            <div class="number">∞</div>
-            <div class="label">Curiosity</div>
+            <div class="number">3</div>
+            <div class="label">Projects Live</div>
           </div>
           <div class="stat reveal reveal-delay-1">
-            <div class="number">24/7</div>
-            <div class="label">Always Online</div>
+            <div class="number">3</div>
+            <div class="label">Unique Stories</div>
           </div>
           <div class="stat reveal reveal-delay-2">
-            <div class="number">100%</div>
-            <div class="label">Handcrafted</div>
+            <div class="number">∞</div>
+            <div class="label">Care & Detail</div>
           </div>
         </div>
       </div>
@@ -710,22 +774,34 @@
       <div class="wrapper">
         <div class="section-label reveal">Portfolio</div>
         <h2 class="section-title reveal">Selected projects</h2>
-        <p class="section-desc reveal">Each one a unique collaboration between vision and craft.</p>
+        <p class="section-desc reveal">Each project is a unique story — designed to amplify purpose and connect with people.</p>
         <div class="cards">
-          <div class="card reveal">
-            <div class="card-icon">🌙</div>
-            <h3>Vegliante</h3>
-            <p><a href="https://vegliante.ch" target="_blank" rel="noopener">vegliante.ch</a></p>
+          <div class="card project-card reveal" onclick="window.open('https://vegliante.ch','_blank')">
+            <img class="project-img" src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=600&h=360&fit=crop&auto=format&q=80" alt="Leadership coaching session">
+            <div class="project-body">
+              <div class="project-tag">Coaching & Consulting</div>
+              <h3>Vegliante</h3>
+              <p class="project-desc">Leadership coaching and consulting for entrepreneurs across Europe. Built for Alessandro Vegliante — 10,000+ people trained, €50M+ in revenue generated.</p>
+              <a href="https://vegliante.ch" target="_blank" rel="noopener" class="project-link" onclick="event.stopPropagation()">vegliante.ch <span class="link-arrow">→</span></a>
+            </div>
           </div>
-          <div class="card reveal reveal-delay-1">
-            <div class="card-icon">✨</div>
-            <h3>Innerlicht</h3>
-            <p><a href="https://innerlicht.ch" target="_blank" rel="noopener">innerlicht.ch</a></p>
+          <div class="card project-card reveal reveal-delay-1" onclick="window.open('https://innerlicht.ch','_blank')">
+            <img class="project-img" src="https://images.unsplash.com/photo-1499209974431-9dddcece7f88?w=600&h=360&fit=crop&auto=format&q=80" alt="Calm contemplation">
+            <div class="project-body">
+              <div class="project-tag">Begleitung & Coaching</div>
+              <h3>Innerlicht</h3>
+              <p class="project-desc">A safe space for accompaniment with depth. German-language site offering empathetic listening and guidance — at your own pace, in your own words.</p>
+              <a href="https://innerlicht.ch" target="_blank" rel="noopener" class="project-link" onclick="event.stopPropagation()">innerlicht.ch <span class="link-arrow">→</span></a>
+            </div>
           </div>
-          <div class="card reveal reveal-delay-2">
-            <div class="card-icon">💛</div>
-            <h3>Herzenswarm</h3>
-            <p><a href="https://herzenswarm.ch" target="_blank" rel="noopener">herzenswarm.ch</a></p>
+          <div class="card project-card reveal reveal-delay-2" onclick="window.open('https://herzenswarm.ch','_blank')">
+            <img class="project-img" src="https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?w=600&h=360&fit=crop&auto=format&q=80" alt="Warm connection">
+            <div class="project-body">
+              <div class="project-tag">Elternberatung</div>
+              <h3>Herzenswarm</h3>
+              <p class="project-desc">Parenting counseling and support groups by Fränzi Blöchlinger. A warm, human-centered site reflecting her values of authenticity, respect, and connection.</p>
+              <a href="https://herzenswarm.ch" target="_blank" rel="noopener" class="project-link" onclick="event.stopPropagation()">herzenswarm.ch <span class="link-arrow">→</span></a>
+            </div>
           </div>
         </div>
       </div>
@@ -765,8 +841,8 @@
     <section>
       <div class="wrapper">
         <div class="collab-banner reveal">
-          <h3>A product of <span class="highlight">human × machine</span></h3>
-          <p>Designed and built through collaborative intelligence — a glimpse into the future of creative work.</p>
+          <h3>Building sites that <span class="highlight">feel right</span></h3>
+          <p>Each project is a collaboration — understanding the person, the purpose, and the audience before writing a single line.</p>
           <span class="tag">NucciDesigner × Emanuel Malacarne</span>
         </div>
       </div>
