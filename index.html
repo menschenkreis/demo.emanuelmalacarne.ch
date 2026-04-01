@@ -1,1 +1,455 @@
-# Demo Site Content
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Emanuel Malacarne — Demo</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #0a0a0b;
+      --surface: #131315;
+      --surface-2: #1a1a1e;
+      --border: #2a2a2f;
+      --text: #e4e4e7;
+      --text-muted: #71717a;
+      --accent: #6366f1;
+      --accent-glow: rgba(99, 102, 241, 0.15);
+      --accent-2: #818cf8;
+      --radius: 16px;
+      --max-w: 900px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Ambient gradient blobs */
+    body::before, body::after {
+      content: '';
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(120px);
+      opacity: 0.4;
+      pointer-events: none;
+      z-index: 0;
+    }
+    body::before {
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(99,102,241,0.15), transparent 70%);
+      top: -200px; right: -150px;
+    }
+    body::after {
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(139,92,246,0.1), transparent 70%);
+      bottom: -100px; left: -200px;
+    }
+
+    .wrapper {
+      position: relative;
+      z-index: 1;
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Nav */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      backdrop-filter: blur(20px) saturate(1.5);
+      -webkit-backdrop-filter: blur(20px) saturate(1.5);
+      background: rgba(10, 10, 11, 0.7);
+      border-bottom: 1px solid var(--border);
+    }
+    nav .wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+    }
+    .logo {
+      font-weight: 700;
+      font-size: 1.1rem;
+      letter-spacing: -0.02em;
+      color: var(--text);
+      text-decoration: none;
+    }
+    .logo span { color: var(--accent); }
+    .nav-links { display: flex; gap: 32px; }
+    .nav-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--text); }
+
+    /* Hero */
+    .hero {
+      padding: 120px 0 80px;
+      text-align: center;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 16px;
+      border-radius: 100px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-bottom: 32px;
+    }
+    .hero-badge .dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: #22c55e;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+    .hero h1 {
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      font-weight: 700;
+      letter-spacing: -0.04em;
+      line-height: 1.1;
+      margin-bottom: 20px;
+    }
+    .hero h1 .gradient {
+      background: linear-gradient(135deg, var(--accent), var(--accent-2), #c084fc);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero p {
+      font-size: 1.15rem;
+      color: var(--text-muted);
+      max-width: 520px;
+      margin: 0 auto 40px;
+    }
+    .hero-actions {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 28px;
+      border-radius: 12px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s;
+      cursor: pointer;
+      border: none;
+    }
+    .btn-primary {
+      background: var(--accent);
+      color: white;
+      box-shadow: 0 0 30px var(--accent-glow);
+    }
+    .btn-primary:hover {
+      background: var(--accent-2);
+      box-shadow: 0 0 50px var(--accent-glow);
+      transform: translateY(-1px);
+    }
+    .btn-secondary {
+      background: var(--surface);
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+    .btn-secondary:hover {
+      background: var(--surface-2);
+      border-color: var(--text-muted);
+    }
+
+    /* Sections */
+    section { padding: 80px 0; }
+
+    .section-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+    .section-title {
+      font-size: 2rem;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      margin-bottom: 16px;
+    }
+    .section-desc {
+      color: var(--text-muted);
+      max-width: 500px;
+      margin-bottom: 48px;
+    }
+
+    /* Cards grid */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+    }
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px;
+      transition: all 0.3s;
+    }
+    .card:hover {
+      border-color: var(--accent);
+      transform: translateY(-4px);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    }
+    .card-icon {
+      width: 44px; height: 44px;
+      border-radius: 12px;
+      background: var(--accent-glow);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      margin-bottom: 20px;
+    }
+    .card h3 {
+      font-size: 1.05rem;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+    .card p {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    /* Stats strip */
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      padding: 48px 0;
+    }
+    .stat {
+      text-align: center;
+      padding: 32px 16px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+    }
+    .stat .number {
+      font-size: 2.5rem;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .stat .label {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    /* Timeline */
+    .timeline { position: relative; padding-left: 32px; }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 6px;
+      top: 8px;
+      bottom: 8px;
+      width: 2px;
+      background: var(--border);
+      border-radius: 2px;
+    }
+    .timeline-item {
+      position: relative;
+      padding-bottom: 40px;
+    }
+    .timeline-item:last-child { padding-bottom: 0; }
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -29px;
+      top: 6px;
+      width: 12px; height: 12px;
+      border-radius: 50%;
+      background: var(--accent);
+      border: 3px solid var(--bg);
+    }
+    .timeline-item .time {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+    .timeline-item h4 {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+    .timeline-item p {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 40px 0;
+      text-align: center;
+    }
+    footer p {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+    footer a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    /* Responsive */
+    @media (max-width: 640px) {
+      .nav-links { display: none; }
+      .stats { grid-template-columns: 1fr; }
+      .hero { padding: 80px 0 60px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="wrapper">
+      <a href="#" class="logo">em<span>.</span>demo</a>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#work">Work</a>
+        <a href="#journey">Journey</a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero">
+      <div class="wrapper">
+        <div class="hero-badge">
+          <span class="dot"></span>
+          Currently available for projects
+        </div>
+        <h1>
+          Crafting digital<br>
+          <span class="gradient">experiences</span>
+        </h1>
+        <p>A minimal demo page — clean design, modern stack, zero frameworks. Built to evolve.</p>
+        <div class="hero-actions">
+          <a href="#work" class="btn btn-primary">See Work</a>
+          <a href="#about" class="btn btn-secondary">Learn More</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- About / Stats -->
+    <section id="about">
+      <div class="wrapper">
+        <div class="stats">
+          <div class="stat">
+            <div class="number">∞</div>
+            <div class="label">Curiosity</div>
+          </div>
+          <div class="stat">
+            <div class="number">24/7</div>
+            <div class="label">Online</div>
+          </div>
+          <div class="stat">
+            <div class="number">100%</div>
+            <div class="label">Handcrafted</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Work / Features -->
+    <section id="work">
+      <div class="wrapper">
+        <div class="section-label">Capabilities</div>
+        <h2 class="section-title">What I bring</h2>
+        <p class="section-desc">A curated set of skills and interests, always expanding.</p>
+        <div class="cards">
+          <div class="card">
+            <div class="card-icon">🎨</div>
+            <h3>Design</h3>
+            <p>Clean aesthetics with purpose. Every pixel serves the experience.</p>
+          </div>
+          <div class="card">
+            <div class="card-icon">⚡</div>
+            <h3>Performance</h3>
+            <p>Fast by default. No frameworks, no bloat — just efficient code.</p>
+          </div>
+          <div class="card">
+            <div class="card-icon">🔮</div>
+            <h3>AI-Powered</h3>
+            <p>Designed and built with the help of AI — pushing boundaries.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Journey -->
+    <section id="journey">
+      <div class="wrapper">
+        <div class="section-label">Timeline</div>
+        <h2 class="section-title">The journey</h2>
+        <p class="section-desc">How this page came to life.</p>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="time">April 2026</div>
+            <h4>Full Redesign</h4>
+            <p>Complete overhaul — dark theme, modern layout, ambient effects, responsive design.</p>
+          </div>
+          <div class="timeline-item">
+            <div class="time">April 2026</div>
+            <h4>First Iteration</h4>
+            <p>Initial setup with basic content. A starting point.</p>
+          </div>
+          <div class="timeline-item">
+            <div class="time">April 2026</div>
+            <h4>Genesis</h4>
+            <p>Repository created. The adventure begins.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrapper">
+      <p>Built by <a href="https://github.com/menschenkreis">Emanuel Malacarne</a> — designed by NucciDesigner</p>
+    </div>
+  </footer>
+
+</body>
+</html>
