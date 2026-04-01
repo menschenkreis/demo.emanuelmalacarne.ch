@@ -6,88 +6,132 @@
   <title>Emanuel Malacarne — AI Coaching</title>
   <link rel="stylesheet" href="assets/style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
   <!-- Nav -->
-  <nav>
+  <nav id="nav">
     <div class="nav-inner">
-      <a href="#" class="logo">EM<span class="dot">.</span></a>
-      <div class="nav-links">
+      <a href="#" class="logo">emanuel<span class="accent">.</span></a>
+      <div class="nav-links" id="navLinks">
         <a href="#services" data-de="Leistungen" data-en="Services">Leistungen</a>
-        <a href="#how" data-de="So geht's" data-en="How It Works">So geht's</a>
+        <a href="#process" data-de="Prozess" data-en="Process">Prozess</a>
         <a href="#about" data-de="Über mich" data-en="About">Über mich</a>
-        <a href="#contact" class="btn btn-sm" data-de="Kontakt" data-en="Get in Touch">Kontakt</a>
+        <a href="#contact" class="nav-cta" data-de="Loslegen →" data-en="Let's Go →">Loslegen →</a>
       </div>
-      <button class="lang-toggle" aria-label="Toggle language">EN</button>
-      <button class="mobile-menu" aria-label="Menu">☰</button>
+      <button class="lang-toggle" id="langToggle" aria-label="Toggle language">EN</button>
+      <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span></button>
     </div>
   </nav>
 
   <!-- Hero -->
-  <section class="hero">
-    <div class="hero-bg"></div>
-    <div class="hero-content">
-      <p class="hero-tag" data-de="KI-gestütztes Coaching" data-en="AI-Powered Coaching">KI-gestütztes Coaching</p>
-      <h1 data-de="Dein Business.<br>KI-gestützt.<br>Zukunftssicher." data-en="Your Business.<br>AI-Powered.<br>Future-Proof.">Dein Business.<br>KI-gestützt.<br>Zukunftssicher.</h1>
-      <p class="hero-sub" data-de="Ich helfe dir, Künstliche Intelligenz in dein Arbeitsleben zu integrieren — pragmatisch, individuell und ohne Bullshit." data-en="I help you integrate Artificial Intelligence into your workflow — pragmatic, personalized, and no bullshit.">Ich helfe dir, Künstliche Intelligenz in dein Arbeitsleben zu integrieren — pragmatisch, individuell und ohne Bullshit.</p>
-      <div class="hero-actions">
-        <a href="#contact" class="btn btn-primary" data-de="Gratis Erstgespräch" data-en="Free Consultation">Gratis Erstgespräch</a>
-        <a href="#how" class="btn btn-outline" data-de="Mehr erfahren" data-en="Learn More">Mehr erfahren</a>
+  <header class="hero">
+    <div class="hero-grid">
+      <div class="hero-left">
+        <div class="badge" data-de="KI-Coach · Freelancer · Zürich" data-en="AI Coach · Freelancer · Zurich">KI-Coach · Freelancer · Zürich</div>
+        <h1>
+          <span data-de="Künstliche Intelligenz." data-en="Artificial Intelligence.">Künstliche Intelligenz.</span><br>
+          <span data-de="Echt eingesetzt." data-en="Actually Applied.">Echt eingesetzt.</span><br>
+          <span class="hero-stroke" data-de="Nicht nur gelesen." data-en="Not Just Read About.">Nicht nur gelesen.</span>
+        </h1>
+      </div>
+      <div class="hero-right">
+        <p class="hero-desc" data-de="Ich bringe KI in deinen Arbeitsalltag. Keine Powerpoint-Präsentationen. Keine Buzzwords. Praxisnahes Coaching, das dich weiterbringt — von der ersten Session an." data-en="I bring AI into your daily work. No PowerPoint decks. No buzzwords. Hands-on coaching that moves you forward — from the very first session.">Ich bringe KI in deinen Arbeitsalltag. Keine Powerpoint-Präsentationen. Keine Buzzwords. Praxisnahes Coaching, das dich weiterbringt — von der ersten Session an.</p>
+        <a href="#contact" class="cta-btn" data-de="Erstgespräch buchen" data-en="Book First Session">Erstgespräch buchen</a>
       </div>
     </div>
-  </section>
+    <div class="scroll-hint" aria-hidden="true">
+      <div class="scroll-line"></div>
+    </div>
+  </header>
 
   <!-- Services -->
   <section id="services" class="services">
     <div class="container">
-      <p class="section-tag" data-de="Was ich anbiete" data-en="What I Offer">Was ich anbiete</p>
-      <h2 data-de="KI-Coaching für den echten Alltag" data-en="AI Coaching for the Real World">KI-Coaching für den echten Alltag</h2>
-      <div class="cards">
-        <div class="card">
-          <div class="card-icon">🧠</div>
-          <h3 data-de="KI-Strategie" data-en="AI Strategy">KI-Strategie</h3>
-          <p data-de="Gemeinsam identifizieren wir die Bereiche, in denen KI deinen Workflow sofort verbessert — und ignorieren den Rest." data-en="Together we identify where AI improves your workflow immediately — and ignore the rest.">Gemeinsam identifizieren wir die Bereiche, in denen KI deinen Workflow sofort verbessert — und ignorieren den Rest.</p>
+      <div class="section-header">
+        <span class="section-num">01</span>
+        <h2 data-de="Was ich mache" data-en="What I Do">Was ich mache</h2>
+      </div>
+      <div class="service-list">
+        <div class="service-item">
+          <div class="service-index">01</div>
+          <div class="service-content">
+            <h3 data-de="KI-Strategie & Assessment" data-en="AI Strategy & Assessment">KI-Strategie & Assessment</h3>
+            <p data-de="Wo steht du? Wo sind die quick wins? Gemeinsam finden wir heraus, welche KI-Anwendungen für dich relevant sind — und welche du ignorieren kannst." data-en="Where are you? Where are the quick wins? Together we find out which AI applications matter for you — and which you can ignore.">Wo steht du? Wo sind die quick wins? Gemeinsam finden wir heraus, welche KI-Anwendungen für dich relevant sind — und welche du ignorieren kannst.</p>
+          </div>
+          <div class="service-tags">
+            <span data-de="Workflow-Analyse" data-en="Workflow Analysis">Workflow-Analyse</span>
+            <span data-de="Potenzial-Check" data-en="Potential Check">Potenzial-Check</span>
+          </div>
         </div>
-        <div class="card">
-          <div class="card-icon">⚡</div>
-          <h3 data-de="Prompting & Tools" data-en="Prompting & Tools">Prompting & Tools</h3>
-          <p data-de="Praktisches Training mit den Tools, die dich wirklich weiterbringen — ChatGPT, Claude, Gemini und mehr." data-en="Hands-on training with the tools that actually move the needle — ChatGPT, Claude, Gemini and more.">Praktisches Training mit den Tools, die dich wirklich weiterbringen — ChatGPT, Claude, Gemini und mehr.</p>
+        <div class="service-item">
+          <div class="service-index">02</div>
+          <div class="service-content">
+            <h3 data-de="Hands-on Tool-Training" data-en="Hands-on Tool Training">Hands-on Tool-Training</h3>
+            <p data-de="ChatGPT, Claude, Midjourney, Notion AI — du lernst nicht nur, was die Tools können, sondern wie du sie produktiv einsetzt. Mit echten Use Cases aus deinem Berufsalltag." data-en="ChatGPT, Claude, Midjourney, Notion AI — you won't just learn what the tools can do, but how to use them productively. With real use cases from your daily work.">ChatGPT, Claude, Midjourney, Notion AI — du lernst nicht nur, was die Tools können, sondern wie du sie produktiv einsetzt. Mit echten Use Cases aus deinem Berufsalltag.</p>
+          </div>
+          <div class="service-tags">
+            <span>Prompting</span>
+            <span>Tools</span>
+          </div>
         </div>
-        <div class="card">
-          <div class="card-icon">🔄</div>
-          <h3 data-de="Workflow-Integration" data-en="Workflow Integration">Workflow-Integration</h3>
-          <p data-de="KI nicht nur testen, sondern wirklich einbauen. Ich begleite dich bei der Umsetzung, bis es sitzt." data-en="Don't just test AI — actually implement it. I guide you through execution until it sticks.">KI nicht nur testen, sondern wirklich einbauen. Ich begleite dich bei der Umsetzung, bis es sitzt.</p>
+        <div class="service-item">
+          <div class="service-index">03</div>
+          <div class="service-content">
+            <h3 data-de="Automatisierung & Integration" data-en="Automation & Integration">Automatisierung & Integration</h3>
+            <p data-de="Von der Idee zur Umsetzung. Ich helfe dir, KI-Lösungen in bestehende Prozesse einzubauen — sei es Kundenkommunikation, Content-Erstellung oder Datenanalyse." data-en="From idea to execution. I help you build AI solutions into existing processes — whether it's customer communication, content creation, or data analysis.">Von der Idee zur Umsetzung. Ich helfe dir, KI-Lösungen in bestehende Prozesse einzubauen — sei es Kundenkommunikation, Content-Erstellung oder Datenanalyse.</p>
+          </div>
+          <div class="service-tags">
+            <span>Automatisierung</span>
+            <span>APIs</span>
+          </div>
         </div>
-        <div class="card">
-          <div class="card-icon">🚀</div>
-          <h3 data-de="Automatisierung" data-en="Automation">Automatisierung</h3>
-          <p data-de="Wiederkehrende Aufgaben automatisieren — von E-Mails bis Reporting. Mehr Zeit für das, was zählt." data-en="Automate repetitive tasks — from emails to reporting. More time for what actually matters.">Wiederkehrende Aufgaben automatisieren — von E-Mails bis Reporting. Mehr Zeit für das, was zählt.</p>
+        <div class="service-item">
+          <div class="service-index">04</div>
+          <div class="service-content">
+            <h3 data-de="Begleitetes Change-Management" data-en="Guided Change Management">Begleitetes Change-Management</h3>
+            <p data-de="KI übernehmen ist ein Kulturwandel. Ich unterstütze dich und dein Team dabei, die richtigen Gewohnheiten aufzubauen und Skepsis in Neugier zu verwandeln." data-en="Adopting AI is a cultural shift. I support you and your team in building the right habits and turning skepticism into curiosity.">KI übernehmen ist ein Kulturwandel. Ich unterstütze dich und dein Team dabei, die richtigen Gewohnheiten aufzubauen und Skepsis in Neugier zu verwandeln.</p>
+          </div>
+          <div class="service-tags">
+            <span>Team</span>
+            <span>Kultur</span>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- How it Works -->
-  <section id="how" class="how">
+  <!-- Process -->
+  <section id="process" class="process">
     <div class="container">
-      <p class="section-tag" data-de="Der Ablauf" data-en="The Process">Der Ablauf</p>
-      <h2 data-de="Drei Schritte zur KI-Praxis" data-en="Three Steps to AI Fluency">Drei Schritte zur KI-Praxis</h2>
-      <div class="steps">
-        <div class="step">
-          <div class="step-num">01</div>
-          <h3 data-de="Analyse" data-en="Analyze">Analyse</h3>
-          <p data-de="Wir schauen uns deinen aktuellen Workflow an und finden die größten Hebel für KI-Einsatz." data-en="We review your current workflow and find the biggest levers for AI adoption.">Wir schauen uns deinen aktuellen Workflow an und finden die größten Hebel für KI-Einsatz.</p>
+      <div class="section-header">
+        <span class="section-num">02</span>
+        <h2 data-de="Wie es läuft" data-en="How It Works">Wie es läuft</h2>
+      </div>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-marker"></div>
+          <div class="timeline-text">
+            <span class="timeline-label" data-de="Woche 1" data-en="Week 1">Woche 1</span>
+            <h3 data-de="Audit & Alignment" data-en="Audit & Alignment">Audit & Alignment</h3>
+            <p data-de="Wir verstehen deinen Workflow, deine Schmerzpunkte und deine Ziele. Am Ende: ein klarer Plan." data-en="We understand your workflow, pain points and goals. Result: a clear plan.">Wir verstehen deinen Workflow, deine Schmerzpunkte und deine Ziele. Am Ende: ein klarer Plan.</p>
+          </div>
         </div>
-        <div class="step">
-          <div class="step-num">02</div>
-          <h3 data-de="Training" data-en="Train">Training</h3>
-          <p data-de="Individuelle Sessions, in denen du die Tools und Techniken lernst, die du brauchst." data-en="Personalized sessions where you learn the tools and techniques you need.">Individuelle Sessions, in denen du die Tools und Techniken lernst, die du brauchst.</p>
+        <div class="timeline-item">
+          <div class="timeline-marker"></div>
+          <div class="timeline-text">
+            <span class="timeline-label" data-de="Woche 2–3" data-en="Week 2–3">Woche 2–3</span>
+            <h3 data-de="Training & Experimente" data-en="Training & Experiments">Training & Experimente</h3>
+            <p data-de="Praktische Sessions mit konkreten Tools. Du probierst aus, ich korrigiere und optimiere live." data-en="Practical sessions with concrete tools. You try things, I correct and optimize live.">Praktische Sessions mit konkreten Tools. Du probierst aus, ich korrigiere und optimiere live.</p>
+          </div>
         </div>
-        <div class="step">
-          <div class="step-num">03</div>
-          <h3 data-de="Umsetzung" data-en="Execute">Umsetzung</h3>
-          <p data-de="Ich bleibe an deiner Seite, während du KI in deinen Alltag integrierst. Bis es läuft." data-en="I stay by your side as you integrate AI into your daily routine. Until it works.">Ich bleibe an deiner Seite, während du KI in deinen Alltag integrierst. Bis es läuft.</p>
+        <div class="timeline-item">
+          <div class="timeline-marker"></div>
+          <div class="timeline-text">
+            <span class="timeline-label" data-de="Woche 4+" data-en="Week 4+">Woche 4+</span>
+            <h3 data-de="Skalierung & Begleitung" data-en="Scale & Support">Skalierung & Begleitung</h3>
+            <p data-de="Was funktioniert, wird zum Standard. Ich bin weiterhin da für Fragen, Optimierung und neue Entwicklungen." data-en="What works becomes standard. I'm still here for questions, optimization and new developments.">Was funktioniert, wird zum Standard. Ich bin weiterhin da für Fragen, Optimierung und neue Entwicklungen.</p>
+          </div>
         </div>
       </div>
     </div>
@@ -96,46 +140,55 @@
   <!-- About -->
   <section id="about" class="about">
     <div class="container">
+      <div class="section-header">
+        <span class="section-num">03</span>
+        <h2 data-de="Warum ich" data-en="Why Me">Warum ich</h2>
+      </div>
       <div class="about-grid">
-        <div class="about-text">
-          <p class="section-tag" data-de="Über mich" data-en="About Me">Über mich</p>
-          <h2 data-de="Praxis statt Theorie" data-en="Practice Over Theory">Praxis statt Theorie</h2>
-          <p data-de="Ich arbeite täglich mit KI — nicht als Theoretiker, sondern als Praktiker. Meine Coaching-Sessions basieren auf echter Erfahrung, nicht auf YouTube-Tutorials." data-en="I work with AI every day — not as a theorist, but as a practitioner. My coaching sessions are built on real experience, not YouTube tutorials.">Ich arbeite täglich mit KI — nicht als Theoretiker, sondern als Praktiker. Meine Coaching-Sessions basieren auf echter Erfahrung, nicht auf YouTube-Tutorials.</p>
-          <p data-de="Mein Ansatz: Was dir tatsächlich hilft, ohne Overhead. Kein Hype, keine Buzzwords — nur klare, anwendbare Lösungen." data-en="My approach: What actually helps you, without overhead. No hype, no buzzwords — just clear, actionable solutions.">Mein Ansatz: Was dir tatsächlich hilft, ohne Overhead. Kein Hype, keine Buzzwords — nur klare, anwendbare Lösungen.</p>
+        <div class="about-col">
+          <blockquote data-de="&quot;Ich habe KI nicht in einem Buch gelesen. Ich nutze sie jeden Tag — für meine Kunden, für meine Projekte, für alles.&quot;" data-en="&quot;I didn't read about AI in a book. I use it every day — for my clients, my projects, everything.&quot;">&quot;Ich habe KI nicht in einem Buch gelesen. Ich nutze sie jeden Tag — für meine Kunden, für meine Projekte, für alles.&quot;</blockquote>
+          <p class="about-name">— Emanuel</p>
         </div>
-        <div class="about-visual">
-          <div class="stats-grid">
-            <div class="stat">
-              <span class="stat-num">50+</span>
-              <span class="stat-label" data-de="Sessions gehalten" data-en="Sessions Delivered">Sessions gehalten</span>
-            </div>
-            <div class="stat">
-              <span class="stat-num">15+</span>
-              <span class="stat-label" data-de="Tools beherrscht" data-en="Tools Mastered">Tools beherrscht</span>
-            </div>
-            <div class="stat">
-              <span class="stat-num">100%</span>
-              <span class="stat-label" data-de="Praxisnah" data-en="Hands-On">Praxisnah</span>
-            </div>
-          </div>
+        <div class="about-col">
+          <ul class="about-list">
+            <li>
+              <strong data-de="Täglich in der Praxis" data-en="Daily Practice">Täglich in der Praxis</strong>
+              <span data-de="— kein Theoretiker, kein Hype-Folge-Treiber" data-en="— not a theorist, not a hype-chaser">— kein Theoretiker, kein Hype-Folge-Treiber</span>
+            </li>
+            <li>
+              <strong data-de="Individuell" data-en="Personalized">Individuell</strong>
+              <span data-de="— dein Workflow ist einzigartig, dein Coaching auch" data-en="— your workflow is unique, so is your coaching">— dein Workflow ist einzigartig, dein Coaching auch</span>
+            </li>
+            <li>
+              <strong data-de="Ehrlich" data-en="Honest">Ehrlich</strong>
+              <span data-de="— wenn KI nicht die Antwort ist, sag ich's dir" data-en="— if AI isn't the answer, I'll tell you">— wenn KI nicht die Antwort ist, sag ich's dir</span>
+            </li>
+            <li>
+              <strong data-de="Langfristig" data-en="Long-term">Langfristig</strong>
+              <span data-de="— ich bleibe dran, bis es selbstläuft" data-en="— I stay on it until it runs itself">— ich bleibe dran, bis es selbstläuft</span>
+            </li>
+          </ul>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Contact CTA -->
-  <section id="contact" class="cta">
+  <!-- Contact -->
+  <section id="contact" class="contact">
     <div class="container">
-      <h2 data-de="Bereit für KI?" data-en="Ready for AI?">Bereit für KI?</h2>
-      <p data-de="Lass uns reden. Das Erstgespräch ist gratis und unverbindlich." data-en="Let's talk. The first consultation is free and no-obligation.">Lass uns reden. Das Erstgespräch ist gratis und unverbindlich.</p>
-      <a href="mailto:hello@example.com" class="btn btn-primary btn-lg" data-de="Jetzt Kontakt aufnehmen" data-en="Get in Touch Now">Jetzt Kontakt aufnehmen</a>
+      <div class="contact-inner">
+        <h2 data-de="Bereit, aufzuhören zu lesen<br>und anzufangen?" data-en="Ready to stop reading<br>and start doing?">Bereit, aufzuhören zu lesen<br>und anzufangen?</h2>
+        <p data-de="Erstgespräch ist gratis, unverbindlich und dauert 30 Minuten." data-en="First consultation is free, no-obligation and takes 30 minutes.">Erstgespräch ist gratis, unverbindlich und dauert 30 Minuten.</p>
+        <a href="mailto:hello@emanuelmalacarne.ch" class="cta-btn cta-btn-light" data-de="hello@emanuelmalacarne.ch →" data-en="hello@emanuelmalacarne.ch →">hello@emanuelmalacarne.ch →</a>
+      </div>
     </div>
   </section>
 
   <!-- Footer -->
   <footer>
-    <div class="container">
-      <p>© 2026 Emanuel Malacarne. <span data-de="Alle Rechte vorbehalten." data-en="All rights reserved.">Alle Rechte vorbehalten.</span></p>
+    <div class="container footer-inner">
+      <span>© 2026 Emanuel Malacarne</span>
+      <span data-de="Gebaut mit natürlicher Sprache & KI" data-en="Built with natural language & AI">Gebaut mit natürlicher Sprache & KI</span>
     </div>
   </footer>
 
