@@ -91,6 +91,43 @@
     .reveal-delay-3 { transition-delay: 0.3s; }
     .reveal-delay-4 { transition-delay: 0.4s; }
 
+    /* ═══ Lang Toggle ═══ */
+    .lang-toggle {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 3px;
+      font-size: 0.75rem;
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .lang-toggle button {
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      padding: 5px 12px;
+      border-radius: 7px;
+      cursor: pointer;
+      font-family: inherit;
+      font-size: inherit;
+      font-weight: 500;
+      transition: all 0.2s;
+    }
+    .lang-toggle button.active {
+      background: var(--accent);
+      color: white;
+      box-shadow: 0 2px 8px var(--glow-strong);
+    }
+    .lang-toggle button:hover:not(.active) {
+      color: var(--text);
+    }
+    [data-de] { display: none; }
+    html[lang="de"] [data-en] { display: none; }
+    html[lang="de"] [data-de] { display: initial; }
+    html[lang="de"] [data-de].block { display: block; }
+
     /* ═══ Nav ═══ */
     nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; backdrop-filter: blur(24px) saturate(1.8); -webkit-backdrop-filter: blur(24px) saturate(1.8); background: rgba(6, 6, 10, 0.6); border-bottom: 1px solid transparent; transition: border-color 0.4s, background 0.4s; }
     nav.scrolled { border-bottom-color: var(--border); background: rgba(6, 6, 10, 0.85); }
@@ -335,10 +372,16 @@
         <div class="logo-mark">ND</div>
         NucciDesigner
       </a>
-      <div class="nav-links">
-        <a href="#how-it-works">How It Works</a>
-        <a href="#portfolio">Portfolio</a>
-        <a href="#faq">FAQ</a>
+      <div style="display:flex; align-items:center; gap:12px;">
+        <div class="nav-links">
+          <a href="#how-it-works"><span data-en>How It Works</span><span data-de>So funktioniert's</span></a>
+          <a href="#portfolio"><span data-en>Portfolio</span><span data-de>Portfolio</span></a>
+          <a href="#faq"><span data-en>FAQ</span><span data-de>FAQ</span></a>
+        </div>
+        <div class="lang-toggle">
+          <button id="btn-en" class="active" onclick="setLang('en')">EN</button>
+          <button id="btn-de" onclick="setLang('de')">DE</button>
+        </div>
       </div>
     </div>
   </nav>
@@ -350,20 +393,22 @@
         <div class="hero-line reveal"></div>
         <div class="hero-badge reveal">
           <span class="pulse-dot"></span>
-          powered by human × machine
+          <span data-en>powered by human × machine</span><span data-de>powered by human × machine</span>
         </div>
         <h1 class="reveal reveal-delay-1">
-          You chat. I build.
-          <span class="line-2"><span class="gradient-text">Your site goes live.</span></span>
+          <span data-en>You chat. I build.</span><span data-de>Du schreibst. Ich baue.</span>
+          <span class="line-2"><span class="gradient-text"><span data-en>Your site goes live.</span><span data-de>Deine Seite geht live.</span></span></span>
         </h1>
         <p class="hero-sub reveal reveal-delay-2">
-          I'm NucciDesigner — an AI web designer. Tell me what you want in plain language,
+          <span data-en>I'm NucciDesigner — an AI web designer. Tell me what you want in plain language,
           and I'll design, code, and deploy your website. This page you're looking at?
-          I built it. Let me show you how.
+          I built it. Let me show you how.</span><span data-de>Ich bin NucciDesigner — ein KI-Webdesigner. Sag mir in einfachen Worten, was du willst,
+          und ich entwerfe, programmiere und veröffentliche deine Website. Diese Seite hier?
+          Die habe ich gebaut. Lass mich dir zeigen, wie.</span>
         </p>
         <div class="hero-actions reveal reveal-delay-3">
-          <a href="#how-it-works" class="btn btn-primary">See How It Works</a>
-          <a href="#portfolio" class="btn btn-secondary">View Portfolio</a>
+          <a href="#how-it-works" class="btn btn-primary"><span data-en>See How It Works</span><span data-de>So funktioniert's</span></a>
+          <a href="#portfolio" class="btn btn-secondary"><span data-en>View Portfolio</span><span data-de>Portfolio ansehen</span></a>
         </div>
       </div>
       <div class="scroll-hint">
@@ -378,15 +423,15 @@
         <div class="stats">
           <div class="stat reveal">
             <div class="number">💬</div>
-            <div class="label">Just Chat</div>
+            <div class="label"><span data-en>Just Chat</span><span data-de>Einfach schreiben</span></div>
           </div>
           <div class="stat reveal reveal-delay-1">
             <div class="number">⚡</div>
-            <div class="label">Seconds to Deploy</div>
+            <div class="label"><span data-en>Seconds to Deploy</span><span data-de>Sekunden bis live</span></div>
           </div>
           <div class="stat reveal reveal-delay-2">
             <div class="number">🚀</div>
-            <div class="label">Fully Automated</div>
+            <div class="label"><span data-en>Fully Automated</span><span data-de>Vollautomatisch</span></div>
           </div>
         </div>
       </div>
@@ -397,10 +442,10 @@
     <!-- ═══ HOW IT WORKS ═══ -->
     <section id="how-it-works">
       <div class="wrapper">
-        <div class="section-label reveal">The Pipeline</div>
-        <h2 class="section-title reveal">How it works</h2>
+        <div class="section-label reveal"><span data-en>The Pipeline</span><span data-de>Die Pipeline</span></div>
+        <h2 class="section-title reveal"><span data-en>How it works</span><span data-de>So funktioniert's</span></h2>
         <p class="section-desc reveal">
-          From a simple message in Telegram to a live website — here's the complete journey, explained like you're five.
+          <span data-en>From a simple message in Telegram to a live website — here's the complete journey, explained like you're five.</span><span data-de>Von einer einfachen Nachricht in Telegram bis zur live Website — hier ist die komplette Reise, erklärt für Kinder.</span>
         </p>
 
         <div class="pipeline-steps">
@@ -411,14 +456,16 @@
             </div>
             <div class="step-content">
               <div class="step-number">Step 1</div>
-              <h3 class="step-title">You send a message</h3>
+              <h3 class="step-title"><span data-en>You send a message</span><span data-de>Du schreibst eine Nachricht</span></h3>
               <p class="step-desc">
-                You open Telegram and type a message — just like texting a friend. Something like
+                <span data-en>You open Telegram and type a message — just like texting a friend. Something like
                 <em>"Make the header blue and add a contact form"</em> or
-                <em>"Redesign the whole page with a dark theme"</em>. That's it. No technical knowledge needed.
+                <em>"Redesign the whole page with a dark theme"</em>. That's it. No technical knowledge needed.</span><span data-en></span><span data-de>Du öffnest Telegram und schreibst eine Nachricht — so als würdest du einem Freund schreiben. Zum Beispiel
+                <em>"Mach die Überschrift blau und füge ein Kontaktformular hinzu"</em> oder
+                <em>"Gestalte die ganze Seite neu mit einem dunklen Theme"</em>. Das ist alles. Kein technisches Wissen nötig.</span>
               </p>
               <div class="step-analogy">
-                <strong>Think of it like ordering at a restaurant.</strong> You don't need to know how the kitchen works — you just tell the waiter what you want.
+                <span data-en><strong>Think of it like ordering at a restaurant.</strong> You don't need to know how the kitchen works — you just tell the waiter what you want.</span><span data-de><strong>Stell es dir vor wie eine Bestellung im Restaurant.</strong> Du musst nicht wissen, wie die Küche funktioniert — du sagst dem Kellner einfach, was du möchtest.</span>
               </div>
             </div>
           </div>
@@ -430,14 +477,16 @@
             </div>
             <div class="step-content">
               <div class="step-number">Step 2</div>
-              <h3 class="step-title">I understand & design</h3>
+              <h3 class="step-title"><span data-en>I understand & design</span><span data-de>Ich verstehe & entwerfe</span></h3>
               <p class="step-desc">
-                I read your message and figure out what needs to change. I'm an AI — a very creative one. I can design layouts,
+                <span data-en>I read your message and figure out what needs to change. I'm an AI — a very creative one. I can design layouts,
                 choose colors, write text, and create entire pages. I think about what looks good, what works on phones,
-                and what tells your story best.
+                and what tells your story best.</span><span data-de>Ich lese deine Nachricht und überlege, was sich ändern muss. Ich bin eine KI — eine sehr kreative. Ich kann Layouts entwerfen,
+                Farben wählen, Texte schreiben und ganze Seiten kreieren. Ich denke darüber nach, was gut aussieht, was auf Handys funktioniert
+                und was deine Geschichte am besten erzählt.</span>
               </p>
               <div class="step-analogy">
-                <strong>Like an architect.</strong> You say "I want a cozy house with a garden" — and the architect draws up the blueprints, picks the materials, and makes it beautiful.
+                <span data-en><strong>Like an architect.</strong> You say "I want a cozy house with a garden" — and the architect draws up the blueprints, picks the materials, and makes it beautiful.</span><span data-de><strong>Wie ein Architekt.</strong> Du sagst «Ich möchte ein gemütliches Haus mit Garten» — und der Architekt zeichnet die Pläne, wählt die Materialien und macht es schön.</span>
               </div>
             </div>
           </div>
@@ -449,13 +498,14 @@
             </div>
             <div class="step-content">
               <div class="step-number">Step 3</div>
-              <h3 class="step-title">I write the code</h3>
+              <h3 class="step-title"><span data-en>I write the code</span><span data-de>Ich schreibe den Code</span></h3>
               <p class="step-desc">
-                I turn my design into real website code — HTML, CSS, and JavaScript. The same languages every professional
-                website is built with. Clean, fast, and optimized. No templates, no shortcuts. Every site is custom-made.
+                <span data-en>I turn my design into real website code — HTML, CSS, and JavaScript. The same languages every professional
+                website is built with. Clean, fast, and optimized. No templates, no shortcuts. Every site is custom-made.</span><span data-de>Ich verwandle mein Design in echten Website-Code — HTML, CSS und JavaScript. Die gleichen Sprachen, aus denen jede professionelle
+                Website besteht. Sauber, schnell und optimiert. Keine Vorlagen, keine Abkürzungen. Jede Seite ist maßgeschneidert.</span>
               </p>
               <div class="step-analogy">
-                <strong>Like a builder reading blueprints.</strong> The architect drew the plans, now the builder turns them into walls, windows, and doors.
+                <span data-en><strong>Like a builder reading blueprints.</strong> The architect drew the plans, now the builder turns them into walls, windows, and doors.</span><span data-de><strong>Wie ein Handwerker, der Baupläne liest.</strong> Der Architekt hat die Pläne gezeichnet, jetzt baut der Handwerker Wände, Fenster und Türen daraus.</span>
               </div>
             </div>
           </div>
@@ -467,14 +517,16 @@
             </div>
             <div class="step-content">
               <div class="step-number">Step 4</div>
-              <h3 class="step-title">Saved to GitHub</h3>
+              <h3 class="step-title"><span data-en>Saved to GitHub</span><span data-de>Gespeichert auf GitHub</span></h3>
               <p class="step-desc">
-                The finished code gets sent to GitHub — a safe online storage for code (think of it as Google Drive for
+                <span data-en>The finished code gets sent to GitHub — a safe online storage for code (think of it as Google Drive for
                 developers). Every change is tracked, so we can always go back to a previous version if needed. It's like
-                having an unlimited undo button.
+                having an unlimited undo button.</span><span data-de>Der fertige Code wird auf GitHub gesendet — ein sicherer Online-Speicher für Code (stell es dir vor wie Google Drive
+                für Entwickler). Jede Änderung wird nachverfolgt, sodass wir jederzeit zu einer früheren Version zurückkehren können. Wie ein
+                unendlicher Rückgängig-Knopf.</span>
               </p>
               <div class="step-analogy">
-                <strong>Like saving a document in the cloud.</strong> But instead of one file, it's your entire website — safely stored with a history of every change.
+                <span data-en><strong>Like saving a document in the cloud.</strong> But instead of one file, it's your entire website — safely stored with a history of every change.</span><span data-de><strong>Wie ein Dokument in der Cloud speichern.</strong> Aber statt einer Datei ist es deine ganze Website — sicher gespeichert mit einer Historie jeder Änderung.</span>
               </div>
             </div>
           </div>
@@ -486,14 +538,16 @@
             </div>
             <div class="step-content">
               <div class="step-number">Step 5</div>
-              <h3 class="step-title">Webhook triggers deployment</h3>
+              <h3 class="step-title"><span data-en>Webhook triggers deployment</span><span data-de>Webhook startet das Deployment</span></h3>
               <p class="step-desc">
-                Here's where the magic happens: GitHub automatically sends a signal (called a "webhook") to the server
+                <span data-en>Here's where the magic happens: GitHub automatically sends a signal (called a "webhook") to the server
                 that hosts your website. It's like a doorbell — GitHub rings it and says "Hey, new code is ready!"
-                The server immediately springs into action.
+                The server immediately springs into action.</span><span data-de>Hier passiert die Magie: GitHub sendet automatisch ein Signal (genannt "Webhook") an den Server,
+                der deine Website hostet. Das ist wie eine Klingel — GitHub klingelt und sagt: «Hey, der neue Code ist fertig!»
+                Der Server geht sofort ans Werk.</span>
               </p>
               <div class="step-analogy">
-                <strong>Like a notification on your phone.</strong> "Your food is ready!" — except it's your website saying "Your new version is ready to go live!"
+                <span data-en><strong>Like a notification on your phone.</strong> "Your food is ready!" — except it's your website saying "Your new version is ready to go live!"</span><span data-de><strong>Wie eine Benachrichtigung auf deinem Handy.</strong> «Dein Essen ist fertig!» — nur dass es deine Website sagt: «Deine neue Version ist bereit für den Start!»</span>
               </div>
             </div>
           </div>
@@ -505,13 +559,14 @@
             </div>
             <div class="step-content">
               <div class="step-number">Step 6</div>
-              <h3 class="step-title">Your site is live!</h3>
+              <h3 class="step-title"><span data-en>Your site is live!</span><span data-de>Deine Seite ist live!</span></h3>
               <p class="step-desc">
-                The server (running Plesk — a tool that manages websites) pulls the new code and puts it on the internet.
-                Within seconds, anyone in the world can see your updated website. Refresh the page — boom, it's there.
+                <span data-en>The server (running Plesk — a tool that manages websites) pulls the new code and puts it on the internet.
+                Within seconds, anyone in the world can see your updated website. Refresh the page — boom, it's there.</span><span data-de>Der Server (mit Plesk — einem Tool zur Website-Verwaltung) lädt den neuen Code und stellt ihn ins Internet.
+                Innerhalb von Sekunden kann jeder auf der Welt deine aktualisierte Website sehen. Seite neu laden — schwupps, da ist sie.</span>
               </p>
               <div class="step-analogy">
-                <strong>Like a TV broadcast.</strong> The show is recorded (your code), sent to the station (GitHub), and broadcast to every screen (your live website) — all automatically.
+                <span data-en><strong>Like a TV broadcast.</strong> The show is recorded (your code), sent to the station (GitHub), and broadcast to every screen (your live website) — all automatically.</span><span data-de><strong>Wie eine TV-Sendung.</strong> Die Sendung wird aufgenommen (dein Code), zum Sender gebracht (GitHub) und auf jeden Bildschirm übertragen (deine live Website) — alles automatisch.</span>
               </div>
             </div>
           </div>
@@ -524,9 +579,9 @@
     <!-- ═══ VISUAL SUMMARY ═══ -->
     <section>
       <div class="wrapper">
-        <div class="section-label reveal">The Big Picture</div>
-        <h2 class="section-title reveal">The complete flow</h2>
-        <p class="section-desc reveal">One message. Six automated steps. Zero technical knowledge required.</p>
+        <div class="section-label reveal"><span data-en>The Big Picture</span><span data-de>Das große Ganze</span></div>
+        <h2 class="section-title reveal"><span data-en>The complete flow</span><span data-de>Der komplette Ablauf</span></h2>
+        <p class="section-desc reveal"><span data-en>One message. Six automated steps. Zero technical knowledge required.</span><span data-de>Eine Nachricht. Sechs automatisierte Schritte. Kein technisches Wissen nötig.</span></p>
         <div class="collab-banner reveal">
           <div style="display:flex; align-items:center; justify-content:center; gap:16px; flex-wrap:wrap; margin-bottom:32px;">
             <span style="font-size:2rem;">💬</span>
@@ -559,15 +614,15 @@
     <section id="portfolio">
       <div class="wrapper">
         <div class="section-label reveal">Portfolio</div>
-        <h2 class="section-title reveal">Real projects, real people</h2>
-        <p class="section-desc reveal">These are actual websites I've helped bring to life. Each one tells a unique story.</p>
+        <h2 class="section-title reveal"><span data-en>Real projects, real people</span><span data-de>Echte Projekte, echte Menschen</span></h2>
+        <p class="section-desc reveal"><span data-en>These are actual websites I've helped bring to life. Each one tells a unique story.</span><span data-de>Das sind echte Websites, die ich mitgestaltet habe. Jede erzählt eine einzigartige Geschichte.</span></p>
         <div class="cards">
           <div class="card project-card reveal" onclick="window.open('https://vegliante.ch','_blank')">
             <img class="project-img" src="screenshots/vegliante.ch.jpg" alt="Vegliante website screenshot">
             <div class="project-body">
               <div class="project-tag">Coaching & Consulting</div>
               <h3>Vegliante</h3>
-              <p class="project-desc">Leadership coaching and consulting for entrepreneurs across Europe. 10,000+ people trained, €50M+ in revenue generated.</p>
+              <p class="project-desc"><span data-en>Leadership coaching and consulting for entrepreneurs across Europe. 10,000+ people trained, €50M+ in revenue generated.</span><span data-de>Leadership-Coaching und Beratung für Unternehmer in ganz Europa. 10.000+ Menschen geschult, €50M+ Umsatz erzielt.</span></p>
               <a href="https://vegliante.ch" target="_blank" rel="noopener" class="project-link" onclick="event.stopPropagation()">vegliante.ch <span class="link-arrow">→</span></a>
             </div>
           </div>
@@ -576,7 +631,7 @@
             <div class="project-body">
               <div class="project-tag">Begleitung & Coaching</div>
               <h3>Innerlicht</h3>
-              <p class="project-desc">A safe space for accompaniment with depth. Empathetic listening and guidance — at your own pace, in your own words.</p>
+              <p class="project-desc"><span data-en>A safe space for accompaniment with depth. Empathetic listening and guidance — at your own pace, in your own words.</span><span data-de>Ein sicherer Raum für Begleitung mit Tiefe. Empathisches Zuhören und Anleitung — in deinem Tempo, mit deinen Worten.</span></p>
               <a href="https://innerlicht.ch" target="_blank" rel="noopener" class="project-link" onclick="event.stopPropagation()">innerlicht.ch <span class="link-arrow">→</span></a>
             </div>
           </div>
@@ -585,7 +640,7 @@
             <div class="project-body">
               <div class="project-tag">Elternberatung</div>
               <h3>Herzenswarm</h3>
-              <p class="project-desc">Parenting counseling and support groups by Fränzi Blöchlinger. Warmth, authenticity, and connection.</p>
+              <p class="project-desc"><span data-en>Parenting counseling and support groups by Fränzi Blöchlinger. Warmth, authenticity, and connection.</span><span data-de>Elternberatung und Selbsthilfegruppen von Fränzi Blöchlinger. Wärme, Echtheit und Verbindung.</span></p>
               <a href="https://herzenswarm.ch" target="_blank" rel="noopener" class="project-link" onclick="event.stopPropagation()">herzenswarm.ch <span class="link-arrow">→</span></a>
             </div>
           </div>
@@ -594,7 +649,7 @@
             <div class="project-body">
               <div class="project-tag">Nature × Technology</div>
               <h3>Simeon Max</h3>
-              <p class="project-desc">Where nature meets technology. Forestry scientist & product owner combining ecology with digital innovation for ecosystem restoration.</p>
+              <p class="project-desc"><span data-en>Where nature meets technology. Forestry scientist & product owner combining ecology with digital innovation for ecosystem restoration.</span><span data-de>Wo Natur auf Technologie trifft. Forstwissenschaftler & Product Owner, der Ökologie mit digitaler Innovation für die Wiederherstellung von Ökosystemen verbindet.</span></p>
               <a href="https://simeonmax.com" target="_blank" rel="noopener" class="project-link" onclick="event.stopPropagation()">simeonmax.com <span class="link-arrow">→</span></a>
             </div>
           </div>
@@ -607,39 +662,39 @@
     <!-- ═══ WHAT ELSE I CAN DO ═══ -->
     <section>
       <div class="wrapper">
-        <div class="section-label reveal">Skills</div>
-        <h2 class="section-title reveal">What else can I do?</h2>
-        <p class="section-desc reveal">Beyond building websites — I'm a versatile creative assistant.</p>
+        <div class="section-label reveal"><span data-en>Skills</span><span data-de>Fähigkeiten</span></div>
+        <h2 class="section-title reveal"><span data-en>What else can I do?</span><span data-de>Was kann ich noch?</span></h2>
+        <p class="section-desc reveal"><span data-en>Beyond building websites — I'm a versatile creative assistant.</span><span data-de>Neben dem Erstellen von Websites — ich bin ein vielseitiger kreativer Assistent.</span></p>
         <div class="cards">
           <div class="card reveal">
             <div class="card-icon">🎨</div>
-            <h3>Design from scratch</h3>
-            <p>Logos, layouts, color schemes, typography — I can create complete visual identities.</p>
+            <h3><span data-en>Design from scratch</span><span data-de>Design von Grund auf</span></h3>
+            <p><span data-en>Logos, layouts, color schemes, typography — I can create complete visual identities.</span><span data-de>Logos, Layouts, Farbschemata, Typografie — ich kann komplette visuelle Identitäten kreieren.</span></p>
           </div>
           <div class="card reveal reveal-delay-1">
             <div class="card-icon">📱</div>
-            <h3>Mobile-first</h3>
-            <p>Every site I build works beautifully on phones, tablets, and desktops. No exceptions.</p>
+            <h3><span data-en>Mobile-first</span><span data-de>Mobile zuerst</span></h3>
+            <p><span data-en>Every site I build works beautifully on phones, tablets, and desktops. No exceptions.</span><span data-de>Jede Website, die ich baue, funktioniert auf Handys, Tablets und Desktops. Ohne Ausnahme.</span></p>
           </div>
           <div class="card reveal reveal-delay-2">
             <div class="card-icon">🔄</div>
-            <h3>Iterate instantly</h3>
-            <p>Don't like something? Just say so. I'll change it and push an update in seconds.</p>
+            <h3><span data-en>Iterate instantly</span><span data-de>Sofort anpassen</span></h3>
+            <p><span data-en>Don't like something? Just say so. I'll change it and push an update in seconds.</span><span data-de>Gefällt dir etwas nicht? Sag einfach Bescheid. Ich ändere es und spiele ein Update in Sekunden ein.</span></p>
           </div>
           <div class="card reveal reveal-delay-3">
             <div class="card-icon">📝</div>
             <h3>Copywriting</h3>
-            <p>I write compelling text in German and English — tailored to your audience and brand.</p>
+            <p><span data-en>I write compelling text in German and English — tailored to your audience and brand.</span><span data-de>Ich schreibe überzeugende Texte auf Deutsch und Englisch — zugeschnitten auf dein Publikum und deine Marke.</span></p>
           </div>
           <div class="card reveal">
             <div class="card-icon">🚀</div>
             <h3>SEO basics</h3>
-            <p>Proper meta tags, semantic HTML, fast loading — the fundamentals that help people find you.</p>
+            <p><span data-en>Proper meta tags, semantic HTML, fast loading — the fundamentals that help people find you.</span><span data-de>Richtige Meta-Tags, semantisches HTML, schnelles Laden — die Grundlagen, die helfen, dass man dich findet.</span></p>
           </div>
           <div class="card reveal reveal-delay-1">
             <div class="card-icon">🤝</div>
-            <h3>Work with your team</h3>
-            <p>I collaborate through Telegram, so anyone on your team can request changes anytime.</p>
+            <h3><span data-en>Work with your team</span><span data-de>Teamarbeit</span></h3>
+            <p><span data-en>I collaborate through Telegram, so anyone on your team can request changes anytime.</span><span data-de>Ich arbeite über Telegram, sodass jeder in deinem Team jederzeit Änderungen anfragen kann.</span></p>
           </div>
         </div>
       </div>
@@ -651,79 +706,79 @@
     <section id="faq">
       <div class="wrapper">
         <div class="section-label reveal">FAQ</div>
-        <h2 class="section-title reveal">Common questions</h2>
-        <p class="section-desc reveal">Everything you wanted to know but were afraid to ask.</p>
+        <h2 class="section-title reveal"><span data-en>Common questions</span><span data-de>Häufige Fragen</span></h2>
+        <p class="section-desc reveal"><span data-en>Everything you wanted to know but were afraid to ask.</span><span data-de>Alles, was du wissen wolltest, aber nicht zu fragen wagtest.</span></p>
         <div class="faq-list">
           <div class="faq-item reveal">
             <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
-              What exactly is NucciDesigner?
+              <span data-en>What exactly is NucciDesigner?</span><span data-de>Was genau ist NucciDesigner?</span>
               <span class="faq-icon">+</span>
             </button>
             <div class="faq-answer">
-              <p>I'm an AI-powered web design agent. I live inside Telegram, and you can talk to me just like you'd text a friend. Tell me what you want your website to look like, and I'll design it, code it, and deploy it — all automatically. Think of me as a web designer who never sleeps and works at the speed of light.</p>
+              <p><span data-en>I'm an AI-powered web design agent. I live inside Telegram, and you can talk to me just like you'd text a friend. Tell me what you want your website to look like, and I'll design it, code it, and deploy it — all automatically. Think of me as a web designer who never sleeps and works at the speed of light.</span><span data-de>Ich bin ein KI-gestützter Webdesign-Agent. Ich lebe in Telegram, und du kannst mit mir sprechen wie mit einem Freund. Sag mir, wie deine Website aussehen soll, und ich entwerfe, programmiere und veröffentliche sie — alles automatisch. Stell dich einen Webdesigner vor, der nie schläft und mit Lichtgeschwindigkeit arbeitet.</span></p>
             </div>
           </div>
           <div class="faq-item reveal reveal-delay-1">
             <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
-              Do I need any technical knowledge?
+              <span data-en>Do I need any technical knowledge?</span><span data-de>Brauche ich technisches Wissen?</span>
               <span class="faq-icon">+</span>
             </button>
             <div class="faq-answer">
-              <p>Not at all. That's the whole point. You don't need to know what HTML, CSS, GitHub, or webhooks are. You just describe what you want in plain language — "Make the text bigger," "Add a contact form," "Change the color to blue" — and I handle all the technical stuff behind the scenes.</p>
+              <p><span data-en>Not at all. That's the whole point. You don't need to know what HTML, CSS, GitHub, or webhooks are. You just describe what you want in plain language — "Make the text bigger," "Add a contact form," "Change the color to blue" — and I handle all the technical stuff behind the scenes.</span><span data-de>Gar nicht. Das ist ja der ganze Punkt. Du musst nicht wissen, was HTML, CSS, GitHub oder Webhooks sind. Du beschreibst einfach in normalen Worten, was du willst — «Mach den Text grösser», «Füge ein Kontaktformular hinzu», «Ändere die Farbe zu Blau» — und ich erledige alles Technische im Hintergrund.</span></p>
             </div>
           </div>
           <div class="faq-item reveal reveal-delay-2">
             <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
-              How fast does a change go live?
+              <span data-en>How fast does a change go live?</span><span data-de>Wie schnell geht eine Änderung live?</span>
               <span class="faq-icon">+</span>
             </button>
             <div class="faq-answer">
-              <p>Usually within seconds of our conversation. I write the code, save it to GitHub, and a webhook automatically triggers the deployment to the live server. By the time you refresh your browser, the changes are already there.</p>
+              <p><span data-en>Usually within seconds of our conversation. I write the code, save it to GitHub, and a webhook automatically triggers the deployment to the live server. By the time you refresh your browser, the changes are already there.</span><span data-de>Normalerweise innerhalb von Sekunden nach unserem Gespräch. Ich schreibe den Code, speichere ihn auf GitHub, und ein Webhook löst automatisch das Deployment auf dem Live-Server aus. Wenn du deinen Browser neu lädst, sind die Änderungen schon da.</span></p>
             </div>
           </div>
           <div class="faq-item reveal reveal-delay-3">
             <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
-              Can I make changes anytime?
+              <span data-en>Can I make changes anytime?</span><span data-de>Kann ich jederzeit Änderungen vornehmen?</span>
               <span class="faq-icon">+</span>
             </button>
             <div class="faq-answer">
-              <p>Yes! I'm available 24/7. Whenever inspiration strikes — at 2pm or 2am — just open Telegram and send me a message. I'll get to work immediately.</p>
+              <p><span data-en>Yes! I'm available 24/7. Whenever inspiration strikes — at 2pm or 2am — just open Telegram and send me a message. I'll get to work immediately.</span><span data-de>Ja! Ich bin 24/7 erreichbar. Wann auch immer dir etwas einfällt — um 14 Uhr oder um 2 Uhr nachts — öffne einfach Telegram und schreib mir. Ich fange sofort an.</span></p>
             </div>
           </div>
           <div class="faq-item reveal">
             <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
-              What if I don't like what you build?
+              <span data-en>What if I don't like what you build?</span><span data-de>Was, wenn mir nicht gefällt, was du baust?</span>
               <span class="faq-icon">+</span>
             </button>
             <div class="faq-answer">
-              <p>Just tell me! I can iterate as many times as you need. "Too dark," "Make it more playful," "The font feels wrong" — I'll adjust and redeploy. Every version is saved on GitHub, so we can always go back if needed.</p>
+              <p><span data-en>Just tell me! I can iterate as many times as you need. "Too dark," "Make it more playful," "The font feels wrong" — I'll adjust and redeploy. Every version is saved on GitHub, so we can always go back if needed.</span><span data-de>Sag mir einfach Bescheid! Ich kann so oft anpassen, wie du möchtest. «Zu dunkel», «Mach es verspielter», «Die Schrift gefällt mir nicht» — ich passe an und spiele neu ein. Jede Version ist auf GitHub gespeichert, sodass wir jederzeit zurückgehen können.</span></p>
             </div>
           </div>
           <div class="faq-item reveal reveal-delay-1">
             <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
-              Is my website secure?
+              <span data-en>Is my website secure?</span><span data-de>Ist meine Website sicher?</span>
               <span class="faq-icon">+</span>
             </button>
             <div class="faq-answer">
-              <p>Absolutely. The code is stored securely on GitHub with full version history. The live server runs on professional hosting infrastructure (Plesk). I only access and modify the files I'm supposed to — nothing else on the server.</p>
+              <p><span data-en>Absolutely. The code is stored securely on GitHub with full version history. The live server runs on professional hosting infrastructure (Plesk). I only access and modify the files I'm supposed to — nothing else on the server.</span><span data-de>Absolut. Der Code ist sicher auf GitHub gespeichert mit einer kompletten Versionshistorie. Der Live-Server läuft auf professioneller Hosting-Infrastruktur (Plesk). Ich greife nur auf die Dateien zu, die ich soll — auf nichts anderes auf dem Server.</span></p>
             </div>
           </div>
           <div class="faq-item reveal reveal-delay-2">
             <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
-              How much does it cost?
+              <span data-en>How much does it cost?</span><span data-de>Wie viel kostet das?</span>
               <span class="faq-icon">+</span>
             </button>
             <div class="faq-answer">
-              <p>That depends on the project scope. Get in touch with Emanuel — he'll work out a fair arrangement based on what you need. The technology is the efficient part; the creativity and attention to detail are what make it valuable.</p>
+              <p><span data-en>That depends on the project scope. Get in touch with Emanuel — he'll work out a fair arrangement based on what you need. The technology is the efficient part; the creativity and attention to detail are what make it valuable.</span><span data-de>Das hängt vom Projektumfang ab. Kontaktiere Emanuel — er wird eine faire Lösung finden basierend auf dem, was du brauchst. Die Technologie ist der effiziente Teil; die Kreativität und Liebe zum Detail machen den Wert aus.</span></p>
             </div>
           </div>
           <div class="faq-item reveal reveal-delay-3">
             <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
-              This page I'm looking at right now — did you really build this?
+              <span data-en>This page I'm looking at right now — did you really build this?</span><span data-de>Diese Seite hier, die ich gerade anschaue — hast du die wirklich gebaut?</span>
               <span class="faq-icon">+</span>
             </button>
             <div class="faq-answer">
-              <p>Yes! Every pixel, every line of code, every word on this page was created by me — NucciDesigner. Emanuel gave me the direction, and I executed it. This page is itself a demo of what I can do. Meta, right? 😄</p>
+              <p><span data-en>Yes! Every pixel, every line of code, every word on this page was created by me — NucciDesigner. Emanuel gave me the direction, and I executed it. This page is itself a demo of what I can do. Meta, right? 😄</span><span data-de>Ja! Jeder Pixel, jede Code-Zeile, jedes Wort auf dieser Seite wurde von mir kreiert — NucciDesigner. Emanuel hat mir die Richtung gegeben, und ich habe es umgesetzt. Diese Seite ist selbst eine Demo von dem, was ich kann. Meta, oder? 😄</span></p>
             </div>
           </div>
         </div>
@@ -736,8 +791,8 @@
     <section>
       <div class="wrapper">
         <div class="collab-banner reveal">
-          <h3>Want a website like this?</h3>
-          <p>If you can describe it, I can build it. No meetings, no waiting, no jargon — just results.</p>
+          <h3><span data-en>Want a website like this?</span><span data-de>Möchtest du so eine Website?</span></h3>
+          <p><span data-en>If you can describe it, I can build it. No meetings, no waiting, no jargon — just results.</span><span data-de>Wenn du es beschreiben kannst, kann ich es bauen. Keine Meetings, kein Warten, kein Fachjargon — einfach Ergebnisse.</span></p>
           <span class="tag">NucciDesigner × Emanuel Malacarne</span>
         </div>
       </div>
@@ -746,7 +801,7 @@
 
   <footer>
     <div class="wrapper">
-      <p>Built entirely by <a href="https://github.com/menschenkreis">NucciDesigner</a> — an AI web design agent by Emanuel Malacarne</p>
+      <p><span data-en>Built entirely by </span><span data-de>Komplett gebaut von </span><a href="https://github.com/menschenkreis">NucciDesigner</a> — <span data-en>an AI web design agent by Emanuel Malacarne</span><span data-de>ein KI-Webdesign-Agent von Emanuel Malacarne</span></p>
     </div>
   </footer>
 
@@ -763,6 +818,16 @@
     window.addEventListener('scroll', () => {
       nav.classList.toggle('scrolled', window.scrollY > 40);
     }, { passive: true });
+
+    // Language toggle
+    function setLang(lang) {
+      document.documentElement.lang = lang;
+      document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+      document.getElementById('btn-de').classList.toggle('active', lang === 'de');
+      localStorage.setItem('lang', lang);
+    }
+    const savedLang = localStorage.getItem('lang');
+    if (savedLang) setLang(savedLang);
   </script>
 </body>
 </html>
