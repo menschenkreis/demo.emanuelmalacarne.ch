@@ -653,22 +653,33 @@
       const cols = window.innerWidth < 640 ? 6 : 8;
       const total = cols * 4;
       document.getElementById('popTotal').textContent = total;
+      function popBubble(el) {
+        if (el.classList.contains('popped')) return;
+        el.classList.add('popped');
+        Audio.pop();
+        popCount++;
+        document.getElementById('popCount').textContent = popCount;
+        if (popCount === total) {
+          document.getElementById('popCount').textContent = total + ' 🎉';
+          Audio.win();
+        }
+      }
       for (let i = 0; i < total; i++) {
         const b = document.createElement('div');
         b.className = 'bubble';
-        b.addEventListener('click', () => {
-          if (b.classList.contains('popped')) return;
-          b.classList.add('popped');
-          Audio.pop();
-          popCount++;
-          document.getElementById('popCount').textContent = popCount;
-          if (popCount === total) {
-            document.getElementById('popCount').textContent = total + ' 🎉';
-            Audio.win();
-          }
-        });
+        b.addEventListener('pointerdown', e => { e.preventDefault(); popBubble(b); });
         grid.appendChild(b);
       }
+      // Drag to pop
+      let dragPopping = false;
+      grid.addEventListener('pointerdown', () => { dragPopping = true; });
+      grid.addEventListener('pointermove', e => {
+        if (!dragPopping) return;
+        const el = document.elementFromPoint(e.clientX, e.clientY);
+        if (el && el.classList.contains('bubble')) popBubble(el);
+      });
+      grid.addEventListener('pointerup', () => dragPopping = false);
+      grid.addEventListener('pointerleave', () => dragPopping = false);
     }
     resetBubbles();
 
